@@ -5,7 +5,7 @@ from client import Client
 
 loop = asyncio.get_event_loop()
 if sys.argv[1] == 'server' or sys.argv[1] == 's':
-    s = Server()
+    s = Server(verbose=True)
     s.setup(loop)
     try:
         loop.run_until_complete(s.monitor())
@@ -14,7 +14,7 @@ if sys.argv[1] == 'server' or sys.argv[1] == 's':
     finally:
         s.teardown()
 elif sys.argv[1] == 'client' or sys.argv[1] == 'c':
-    c = Client(100)
+    c = Client(100, verbose=True)
     c.setup(loop)
     try:
         loop.run_until_complete(c.makeRequests('http://localhost:8080'))

@@ -12,7 +12,7 @@ Write the following in Python3 & asyncio:
 `$ python3 test_client.py`
 
 ## Running
-`$ python3 server.py`
+`$ python3 main.py server`
 In seperate terminal:
-`$ python3 client.py`
+`$ python3 main.py client`
 

@@ -21,9 +21,7 @@ Usage:
 """
 
 class Server:
-    # Global for releasing while loops
     done = False
-    # Global for keeping track of requests
     reqs_s = 0
     lifetime_requests = 0
 
@@ -88,13 +86,3 @@ class Server:
             res = await fetch(session, 'http://localhost:8080')
             if self.verbose:
                 print(res)
-
-#  loop = asyncio.get_event_loop()
-#  s = Server(5)
-#  s.setup(loop)
-#  try:
-    #  loop.run_until_complete(s.monitor())
-#  except KeyboardInterrupt:
-    #  print('KeyboardInterrupt')
-#  finally:
-    #  s.teardown()

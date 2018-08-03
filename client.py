@@ -49,7 +49,6 @@ class Client:
     def add_new_tokens(self):
         now = time.monotonic()
         time_since_update = now - self.updated_at
-        # Update based on RATE, potentially not the best
         new_tokens = time_since_update * self.rate
         if new_tokens > 1:
             self.tokens = min(self.tokens + new_tokens, self.rate)
@@ -89,14 +88,3 @@ class Client:
         self._loop.run_until_complete(group)
         self._loop.run_until_complete(self.client.close())
         print('Bye.')
-
-loop = asyncio.get_event_loop()
-c = Client(100, 2)
-c.setup(loop)
-try:
-      loop.run_until_complete(c.makeRequests('http://localhost:8080'))
-except KeyboardInterrupt:
-      print('KeyboardInterrupt')
-finally:
-      c.teardown()
-      loop.close()
